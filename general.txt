@@ -1,0 +1,121 @@
+1) What is the difference between interface and type?
+
+Interface
+- interface can be extended using the 'extends' keyword.
+- interface can be implemented by classes using the 'implements' keyword.
+
+interface Animal {
+  name: string;
+}
+
+interface Dog extends Animal {
+  breed: string;
+}
+
+
+Types
+- Types can be extended using intersection('&') for object types.
+- Types cannot be directly implemented by classes
+
+type Animal = {
+  name: string;
+};
+
+type Dog = Animal & {
+  breed: string;
+};
+
+Declaration merging
+-------------------
+Interface
+- Interface support declaratin merging. If you declare the same interface multiple times, 
+  Typescript will merge them into a single declaration.
+
+Type
+- Types do not support declaratin merging. if you declare the same type multiple times,
+  Typescript will produce an error.
+
+  interface Car {
+  brand: string;
+}
+
+interface Car {
+  model: string;
+}
+
+// Merged interface
+// interface Car {
+//   brand: string;
+//   model: string;
+// }
+
+
+type Car = {
+  brand: string;
+};
+
+// Error: Duplicate identifier 'Car'.
+// type Car = {
+//   model: string;
+// };
+
+
+Intersection and Union
+=======================
+
+Interface
+----------
+- Interface can be used with 'extends' for inheritance.
+- Interface can be merged using declaration merging.
+Type
+----
+- Types can be used with '&' for intersection and '|' for Union.
+type A = { a: number };
+type B = { b: number };
+
+// Intersection
+type Intersection = A & B; // { a: number, b: number }
+
+// Union
+type Union = A | B; // { a: number } | { b: number }
+
+
+interface A {
+  a: number;
+}
+
+interface B {
+  b: number;
+}
+
+// Extending interfaces
+interface Intersection extends A, B {}
+
+// Union of interfaces
+type Union = A | B;
+
+2) Interface vs Type
+
+reopening of the interface
+----------------
+
+interface User {
+    name: string,
+    age: number
+}
+
+interface User {
+    email: string,
+}
+
+const hitesh: User = {
+    name: 'Hitesh',
+    age: 30,
+    email: 'hitesh@mail.com'
+}
+
+interface has the 'inheritance' property
+
+interface Admin extends User {
+    role: 'Admin' | 'User'
+}
