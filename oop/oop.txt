@@ -1,0 +1,7 @@
+Benefits of OOP
+
+- Easier debugging
+- Reuse of code through Inheritance
+- Flexibilty through Polymorphism
+- Effective problem solving
+- Project Decoupling
