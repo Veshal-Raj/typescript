@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+// ================================== method overriding
 var Animals = /** @class */ (function () {
     function Animals() {
     }
@@ -51,3 +52,18 @@ var Animal3 = new Cats();
 makeAnimalSound(Animal1);
 makeAnimalSound(Animal2);
 makeAnimalSound(Animal3);
+// ============================================= method overloading
+var Calculator = /** @class */ (function () {
+    function Calculator() {
+    }
+    Calculator.prototype.add = function (x, y) {
+        if (typeof x === 'number' && typeof y === 'number')
+            return x + y;
+        else if (typeof x === 'string' && typeof y === 'string')
+            return x + y;
+    };
+    return Calculator;
+}());
+var calc = new Calculator();
+console.log(calc.add(1, 2));
+console.log(calc.add('1', '2'));
